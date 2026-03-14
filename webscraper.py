@@ -23,9 +23,15 @@ def getInfo (url: str):
     padrao_toc = r'<span class="vector-toc-numb">[0-9.]+</span>\s*<span>([^<]+)</span>'
     padrao_img = r'<a href="/wiki/Ficheiro:([^"]+)"[^>]*class="mw-file-description"'
 
+    artigo_atual = url.split("/wiki/") [1] #pega o que vem depois de wiki
+    padrao_link = rf'<a href="/wiki/(?!{artigo_atual}")([^":#]+)"'#pega todos os links que tem comeco = wiki(links internos)
+                                              #retira todos os liks com ":" , "#", e artigos que se referenciam
+    
     html = getHTML(url)
     print(re.findall(padrao_toc, html))
     print(re.findall(padrao_img, html))
+    print(re.findall(padrao_link, html))
+
 
 
 
@@ -35,12 +41,11 @@ cabecalhos = {
 
 
 url = input(str("Digite a URL da página do wikipedia: "))
-# re.sub('\s+$', "", url) # retira todos os espaços no final
+url_limpa = re.sub(r'\s+', '', url) # retira todos os espaços no final
 
-if (ehValido(url) == None):
+if (ehValido(url_limpa) == None):
     exit()
 
-getInfo(url)
+getInfo(url_limpa)
 
-# https://pt.wikipedia.org/wiki/Immanuel_Kant
 
