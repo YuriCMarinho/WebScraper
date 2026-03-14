@@ -20,7 +20,7 @@ def getHTML (url: str): # pega o html da url
     return html
 
 def getInfo (url: str):
-    padrao_toc = r'<span>(.*)</span>'
+    padrao_toc = r'<span>([^<]+)</span>'
 
     html = getHTML(url)
     print(re.findall(padrao_toc, html))
@@ -40,4 +40,4 @@ if (ehValido(url) == None):
 
 getInfo(url)
 
-
+# https://pt.wikipedia.org/wiki/Immanuel_Kant
