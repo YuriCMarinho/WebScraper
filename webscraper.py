@@ -20,7 +20,7 @@ def getHTML (url: str): # pega o html da url
     return html
 
 def getInfo (url: str):
-    padrao_toc = r'<span class="vector-toc-numb">[0-9]</span>\s*<span>([^<]+)</span>'
+    padrao_toc = r'<span class="vector-toc-numb">[0-9.]+</span>\s*<span>([^<]+)</span>'
     padrao_img = r'<a href="/wiki/Ficheiro:([^"]+)"[^>]*class="mw-file-description"'
 
     html = getHTML(url)
