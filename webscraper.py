@@ -20,10 +20,12 @@ def getHTML (url: str): # pega o html da url
     return html
 
 def getInfo (url: str):
-    padrao_toc = r'<span>([^<]+)</span>'
+    padrao_toc = r'<span class="vector-toc-numb">[0-9]</span>\s*<span>([^<]+)</span>'
+    padrao_img = r'<a href="/wiki/Ficheiro:([^"]+)"[^>]*class="mw-file-description"'
 
     html = getHTML(url)
     print(re.findall(padrao_toc, html))
+    print(re.findall(padrao_img, html))
 
 
 
@@ -41,3 +43,4 @@ if (ehValido(url) == None):
 getInfo(url)
 
 # https://pt.wikipedia.org/wiki/Immanuel_Kant
+
