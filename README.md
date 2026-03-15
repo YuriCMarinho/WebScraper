@@ -1,32 +1,29 @@
-# WebScraper (Wikipedia) — Python
+# Python WebScraper for Wikipedia (PT)
 
-Script simples em Python para fazer scraping de páginas da **Wikipédia em português (pt.wikipedia.org)**.  
-Ele baixa o HTML do artigo e imprime no terminal:
+Este é um script simples em Python que utiliza as bibliotecas `requests` e `re` para extrair dados de artigos da **Wikipédia em Português** (`pt.wikipedia.org`).
+O script foi projetado para ser leve e não ter dependências complexas.
 
-- Títulos do sumário (TOC)
-- Arquivos de imagem presentes na página
-- Links internos para outros artigos
+---
 
-## Requisitos
-- Python 3
-- Biblioteca `requests`
+## O que ele extrai?
 
-Instalação:
-```bash
-pip install requests
-```
+Ao fornecer a URL de um artigo, o script irá extrair e imprimir no terminal três tipos de informação:
+
+1.  **Sumário (TOC):** Os títulos das seções principais do artigo.
+2.  **Nomes dos Arquivos de Imagem:** O nome dos arquivos de imagem (ex: `Python_logo_and_wordmark.svg`).
+3.  **Links Internos:** Links para outros artigos dentro da própria Wikipédia. Links para seções da mesma página (`#`) ou para outras áreas (ex: `Ficheiro:`) são ignorados.
+
+---
 
 ## Como usar
-Execute:
+
+### Requisitos
+- Python 3.x
+- Biblioteca `requests`
+
+### Instalação
+Clone o repositório e instale a dependência:
 ```bash
-python webscraper.py
-```
-
-Depois digite a URL de um artigo da Wikipédia PT, por exemplo:
-```text
-https://pt.wikipedia.org/wiki/Python
-```
-
-## Observações
-- O script valida se a URL contém `pt.wikipedia.org`.
-- A extração é feita com **regex** diretamente no HTML (pode quebrar se a estrutura da Wikipédia mudar).
+git clone https://github.com/YuriCMarinho/WebScraper.git
+cd WebScraper
+pip install requests
